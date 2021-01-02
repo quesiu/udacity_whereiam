@@ -25,23 +25,26 @@ void drive_robot(float lin_x, float ang_z)
 void process_image_callback(const sensor_msgs::Image img)
 {
 	ROS_INFO_STREAM("Image callback");
-    int white_pixel = 255;
+    int white_pixel_rgb = 255;
 	bool white_detected = false;
-	int detected_pixel = 0;
+	int detected_pixel_row = 0;
 
     // DONE: Loop through each pixel in the image and check if there's a bright white one
 	// Get camera informations
 	int height = img.height;
+	int width = img.width;
 	int step = img.step;
 	
 	for (int y = 0; y < height ; y++){
-		for (int x = 0; x < step ; x++){
+		for (int x = 0; x < step ; x+=3){
 			// Go through each elements of the image			
-			if (img.data[y*step+x] == white_pixel){
+			if ((img.data[y*step+x] == white_pixel_rgb) 
+			&& (img.data[y*step+x+1] == white_pixel_rgb) 
+			&& (img.data[y*step+x+2] == white_pixel_rgb)){
 				// White pixel detected
 				ROS_INFO_STREAM("White pixel detected");
 				white_detected = true;
-				detected_pixel = x;
+				detected_pixel_row = (int)floor(x/3);
 				break;
 			}
 		if (white_detected){
@@ -54,11 +57,11 @@ void process_image_callback(const sensor_msgs::Image img)
 	// White pixel
 	if (white_detected){
 		// Left
-		if (detected_pixel < (int)floor(step/3)){
+		if (detected_pixel_row < (int)floor(width/3)){
 			drive_robot(0.0, 0.5);	
 		}
 		// Right
-		else if (detected_pixel > step - (int)floor(step/3)){
+		else if (detected_pixel_row > width - (int)floor(width/3)){
 			drive_robot(0.0, -0.5);
 		}
 		// Front
