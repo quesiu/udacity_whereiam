@@ -1,4 +1,4 @@
-# udacity_gochaseit
+# udacity_whereiam
 Git repository for **Project 3 - Where Am I?**, part of [Robotics Software Engineer nanodegree](https://www.udacity.com/course/robotics-software-engineer--nd209).
 
 ## Description
@@ -18,25 +18,31 @@ Git is also recommended to clone this repository.
 Please follow the procedure below to be able to correctly build the project:
 ```
 git clone https://github.com/quesiu/udacity_whereiam.git
-cd /change_to_your_local_path_where_this_repo_has_been_cloned/udacity_whereiam
+cd /<YOUR_LOCAL_PATH>/udacity_whereiam
 mkdir catkin_ws
-mv Project\ 3/ catkin_ws/src
+mv Project_3/ catkin_ws/src
 ```
 
 ## Build
 Do the following to build the project:
 ```
-cd /change_to_your_local_path_where_this_repo_has_been_cloned/udacity_whereiam/catkin_ws
+cd /<YOUR_LOCAL_PATH>/udacity_whereiam/catkin_ws
 catkin_make
 ```
 
-## Usage
-After project has been correctly built, open a first terminal and do the following:
+## Generate a PGM Map
+As the PGM map is too heavy to be committed, please generate your own by following these two procedures:
 ```
-cd /change_to_your_local_path_where_this_repo_has_been_cloned/udacity_whereiam/catkin_ws
+cd /<YOUR_LOCAL_PATH>/udacity_whereiam/catkin_ws
 source devel/setup.bash
-roslaunch my_robot world.launch
+gzserver src/pgm_map_creator/world/test_course.world
 ```
+Open a second terminal and simply type:
+`roslaunch pgm_map_creator request_publisher.launch`
+Then copy the map:
+`src/pgm_map_creator/maps/map.pgm src/my_robot/maps/map.pgm`
+
+## Usage
 TODO
 
 ## Support
