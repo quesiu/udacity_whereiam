@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  
+  <!-- Map Server Node
+  <node type="map_server" name="map_server" pkg="map_server" />
+  
+  AMCL Node
+  <node type="amcl" name="amcl" pkg="amcl" />
+
+  Move Base Node
+  <node type="move_base" name="move_base" pkg="move_base"/>
+  -->
+</launch>
