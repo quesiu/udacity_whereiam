@@ -143,7 +143,7 @@
   </joint>
 
   <!-- Optional -->
-  <link name='right_wheel_f'>
+  <!-- <link name='right_wheel_f'>
 		
     <inertial>
       <mass value="5.0"/>
@@ -285,7 +285,7 @@
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
     <dynamics damping="1.0" friction="1.0"/>
-  </joint>
+  </joint> -->
 
 	<link name='camera'>
 		<inertial>
