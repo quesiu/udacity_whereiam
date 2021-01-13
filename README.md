@@ -22,7 +22,6 @@ cd /<YOUR_LOCAL_PATH>/udacity_whereiam
 mkdir catkin_ws
 mv Project_3/ catkin_ws/src
 cd catkin_ws/src
-git clone https://github.com/udacity/pgm_map_creator.git
 ```
 
 ## Build
@@ -32,20 +31,12 @@ cd /<YOUR_LOCAL_PATH>/udacity_whereiam/catkin_ws
 catkin_make
 ```
 
-## Generate a PGM Map
-As the PGM map is too heavy to be committed, please generate your own by following these two procedures:
+## Unzip PGM Map
+As the PGM map is too heavy to be committed direclty, please unzip it using this method:
 ```
-cd /<YOUR_LOCAL_PATH>/udacity_whereiam/catkin_ws
-source devel/setup.bash
-gzserver src/pgm_map_creator/world/test_course.world
+cd /<YOUR_LOCAL_PATH>/udacity_whereiam/catkin_ws/src/my_robot/maps
+tar -xzf map.pgm.tar.gz
 ```
-
-Open a second terminal and simply type:
-`roslaunch pgm_map_creator request_publisher.launch`
-
-Then copy the map:
-`src/pgm_map_creator/maps/map.pgm src/my_robot/maps/map.pgm`
-
 ## Usage
 TODO
 
